@@ -1,0 +1,27 @@
+WSL UNBUTU 
+
+Install NodeJs
+
+sudo apt update
+sudo apt install curl git
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+
+Install HH
+
+yarn init
+yarn add --dev hardhat
+yarn hardhat
+yarn add --dev dotenv
+
+cree une block chain local persistante 
+yarn hardhat node 
+
+yarn global add hardhat-shorthand
+
+yarn add --dev @nomiclabs/hardhat-ethers@npm:hardhat-deploy-ethers ethers @nomiclabs/hardhat-etherscan @nomiclabs/hardhat-waffle chai ethereum-waffle hardhat hardhat-contract-sizer hardhat-deploy hardhat-gas-reporter prettier prettier-plugin-solidity solhint solidity-coverage dotenv
+
+
+metadat folder doit avoir / a la fin, 
+metadta hiden doit avoir /NAME.json
