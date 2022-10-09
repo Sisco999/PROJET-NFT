@@ -22,10 +22,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
      const { deploy, log } = deployments
      const { deployer } = await getNamedAccounts()
      const chainId = network.config.chainId
-     const args = [
-          (_initBaseURI = process.env.BASE_URI),
-          (_initNotRevealedUri = process.env.NOT_REAVEAL_URI),
-     ]
+     const args = [(_initBaseURI = process.env.BASE_URI)]
 
      const MintingDapp = await deploy("MintingDapp", {
           from: deployer,

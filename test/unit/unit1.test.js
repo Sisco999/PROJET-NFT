@@ -1,6 +1,5 @@
 const { deployments, ethers, getNamedAccounts, provider } = require("hardhat")
 const { assert, expect } = require("chai")
-const { InfuraProvider } = require("@ethersproject/providers")
 
 describe("MintingDapp", async function () {
      let MintingDapp
@@ -24,14 +23,6 @@ describe("MintingDapp", async function () {
                await transactionResponse1.wait(1)
                const CurentBaseURI = await MintingDapp.baseURI()
                assert.equal(CurentBaseURI.toString(), NewBaseURI)
-          })
-
-          it("Should Change the NrB URI", async function () {
-               const NewNrBURI = "ipfs://NewNrBURI"
-               const transactionResponse1 = await MintingDapp.setNotRevealedURI(NewNrBURI)
-               await transactionResponse1.wait(1)
-               const CurentNrBURI = await MintingDapp.notRevealedUri()
-               assert.equal(CurentNrBURI.toString(), NewNrBURI)
           })
      })
 

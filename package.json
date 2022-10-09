@@ -41,21 +41,17 @@
           "lint:fix": "solhint 'contracts/**/*.sol' --fix",
           "format": "prettier --write .",
           "coverage": "hardhat coverage",
-          "gasprice": "hh run scripts/GasPrice.js",
-          "mint": "hh run scripts/Mint.js --network localhost",
-          "deployLocal": "yarn hardhat run deploy/01-deploy.js --network localhost",
-          "price": "yarn hardhat run scripts/1ChheckPrice.js --network localhost",
-          "changesuplly": "yarn hardhat run scripts/ChangeMaxSupply.js --network localhost",
-          "supply": "yarn hardhat run scripts/checkSuply.js --network localhost",
-          "Changeprice": "yarn hardhat run scripts/ChangePrice.js --network localhost",
-          "reveal": "yarn hardhat run scripts/reveal.js --network localhost",
-          "revealS": "yarn hardhat run scripts/RevealStatue.js --network localhost",
-          "MaxMint": "yarn hardhat run scripts/MaxMintCheck.js --network localhost",
-          "ChangeMaxMint": "yarn hardhat run scripts/MaxMintChange.js --network localhost",
-          "ChangeBaseURI": "yarn hardhat run scripts/BaseURIChange.js --network localhost",
-          "CheckBaseURI": "yarn hardhat run scripts/BaseURICheck.js --network localhost",
-          "givemethecash": "yarn hardhat run scripts/withdraw.js --network localhost",
-          "Balance": "yarn hardhat run scripts/withdraw.js --network localhost"
-
+          "gasprice": "hh run scripts/GasPrice.js --network goerli",
+          "mint": "hh run scripts/Mint.js ",
+          "deployLocal": "yarn hardhat run deploy/01-deploy.js ",
+          "price": "yarn hardhat run scripts/1ChheckPrice.js ",
+          "changesuplly": "yarn hardhat run scripts/ChangeMaxSupply.js ",
+          "supply": "yarn hardhat run scripts/checkSuply.js ",
+          "Changeprice": "yarn hardhat run scripts/ChangePrice.js ",
+          "MaxMint": "yarn hardhat run scripts/MaxMintCheck.js ",
+          "ChangeMaxMint": "yarn hardhat run scripts/MaxMintChange.js ",
+          "ChangeBaseURI": "yarn hardhat run scripts/BaseURIChange.js",
+          "CheckBaseURI": "yarn hardhat run scripts/BaseURICheck.js ",
+          "givemethecash": "yarn hardhat run scripts/withdraw.js "
      }
 }

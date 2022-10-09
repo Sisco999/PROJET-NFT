@@ -2,9 +2,6 @@ async function main() {
      const { deployer } = await getNamedAccounts()
      const MintingDapp = await ethers.getContract("MintingDapp", deployer)
 
-     const revealedMay = await MintingDapp.revealed()
-
-     console.log(`Revealed?: ${revealedMay}`)
      const transactionResponse2 = await MintingDapp.reveal()
      await transactionResponse2.wait(1)
      const Nrev = await MintingDapp.revealed()

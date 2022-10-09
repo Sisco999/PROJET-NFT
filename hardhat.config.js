@@ -29,6 +29,7 @@ const REPORT_GAS = process.env.REPORT_GAS || true
 const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY || "COINMARKETCAP_API_KEY"
 
 module.exports = {
+     
      defaultNetwork: "hardhat",
      networks: {
           hardhat: {
@@ -37,6 +38,7 @@ module.exports = {
                //   url: MAINNET_RPC_URL
                // }
                chainId: 31337,
+               
           },
           localhost: {
                chainId: 31337,
@@ -49,6 +51,7 @@ module.exports = {
                //   },
                saveDeployments: true,
                chainId: 5,
+              
           },
           mainnet: {
                url: MAINNET_RPC_URL,

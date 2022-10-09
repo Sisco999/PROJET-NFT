@@ -21,16 +21,11 @@ contract MintingDapp is ERC721Enumerable, Ownable {
      string public baseURI;
      string private i_baseExtension = ".json";
      uint256 public s_cost = 5;
-     uint256 public maxSupply = 22222;
-     bool public revealed = false;
+     uint256 public maxSupply = 222;
      uint256 public s_maxMintAmount = 222;
-     string public notRevealedUri;
 
-     constructor(string memory _initBaseURI, string memory _initNotRevealedUri)
-          ERC721("NFT_2XRobot", "2XR")
-     {
+     constructor(string memory _initBaseURI) ERC721("NFT_2XRobot", "2XR") {
           setBaseURI(_initBaseURI);
-          setNotRevealedURI(_initNotRevealedUri);
      }
 
      // internal
@@ -65,10 +60,6 @@ contract MintingDapp is ERC721Enumerable, Ownable {
      function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {
           require(_exists(tokenId), "ERC721Metadata: URI query for nonexistent token");
 
-          if (revealed == false) {
-               return notRevealedUri;
-          }
-
           string memory s_currentBaseURI = _baseURI();
           return
                bytes(s_currentBaseURI).length > 0
@@ -76,11 +67,6 @@ contract MintingDapp is ERC721Enumerable, Ownable {
                          abi.encodePacked(s_currentBaseURI, tokenId.toString(), i_baseExtension)
                     )
                     : "";
-     }
-
-     //only owner
-     function reveal() public onlyOwner {
-          revealed = true;
      }
 
      function setCost(uint256 _newCost) public onlyOwner {
@@ -93,10 +79,6 @@ contract MintingDapp is ERC721Enumerable, Ownable {
 
      function setmaxSupply(uint256 _newmaxSupply) public onlyOwner {
           maxSupply = _newmaxSupply;
-     }
-
-     function setNotRevealedURI(string memory _notRevealedURI) public onlyOwner {
-          notRevealedUri = _notRevealedURI;
      }
 
      function setBaseURI(string memory _newBaseURI) public onlyOwner {
