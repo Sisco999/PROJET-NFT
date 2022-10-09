@@ -4,8 +4,10 @@ async function main() {
      const MintingDapp = await ethers.getContract("MintingDapp", deployer)
 
      // Call the retrieve() function of the deployed Box contract
-     const value = await MintingDapp.s_cost()
-     console.log("Price IS ", value.toString())
+     const Value = await MintingDapp.maxSupply()
+     console.log("Max supply is:", Value.toString())
+     const value = await MintingDapp.totalSupply()
+     console.log("Already Minted  ", value.toString())
 }
 
 main()
