@@ -8,7 +8,7 @@ async function main() {
      console.log("Price IS ", value.toString())
 
      // change price
-     const transactionResponse1 = await MintingDapp.setCost(4000000000000000)
+     const transactionResponse1 = await MintingDapp.setCost(5000000000000000000)
      await transactionResponse1.wait(1)
      const NewPriceCheck = await MintingDapp.s_cost()
      console.log(`Updated coast: ${NewPriceCheck}`)

@@ -18,11 +18,11 @@ contract MintingDapp is ERC721Enumerable, Ownable {
      using Strings for uint256;
 
      // State variables
-     string public baseURI;
+     string i_baseURI;
      string private i_baseExtension = ".json";
-     uint256 public s_cost = 5;
-     uint256 public maxSupply = 222;
-     uint256 public s_maxMintAmount = 222;
+     uint256 public s_cost = 30000000000000000;
+     uint256 public i_maxSupply = 16333;
+     uint256 private s_maxMintAmount = 222;
 
      constructor(string memory _initBaseURI) ERC721("NFT_2XRobot", "2XR") {
           setBaseURI(_initBaseURI);
@@ -30,14 +30,14 @@ contract MintingDapp is ERC721Enumerable, Ownable {
 
      // internal
      function _baseURI() internal view virtual override returns (string memory) {
-          return baseURI;
+          return i_baseURI;
      }
 
      // public
      function mint(uint256 _mintAmount) public payable {
           uint256 s_supply = totalSupply();
           require(_mintAmount <= s_maxMintAmount);
-          require((s_supply + _mintAmount <= maxSupply), "Everythings as been minted! Sorry");
+          require((s_supply + _mintAmount <= i_maxSupply), "Everythings as been minted! Sorry");
 
           if (msg.sender != owner()) {
                require(msg.value >= s_cost * _mintAmount, "You need to spend more money");
@@ -78,11 +78,11 @@ contract MintingDapp is ERC721Enumerable, Ownable {
      }
 
      function setmaxSupply(uint256 _newmaxSupply) public onlyOwner {
-          maxSupply = _newmaxSupply;
+          i_maxSupply = _newmaxSupply;
      }
 
      function setBaseURI(string memory _newBaseURI) public onlyOwner {
-          baseURI = _newBaseURI;
+          i_baseURI = _newBaseURI;
      }
 
      function getContractBalance() public view onlyOwner returns (uint256) {
@@ -93,4 +93,8 @@ contract MintingDapp is ERC721Enumerable, Ownable {
           (bool os, ) = payable(owner()).call{value: address(this).balance}("");
           require(os);
      }
+
+     function getcost() public view returns (uint256) {
+        return s_cost;
+    }
 }

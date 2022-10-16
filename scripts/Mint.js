@@ -4,7 +4,7 @@ async function main() {
      const { deployer } = await getNamedAccounts()
      const MintingDapp = await ethers.getContract("MintingDapp", deployer)
 
-     const mint = await MintingDapp.mint(3, { value: ethers.utils.parseEther("0") })
+     const mint = await MintingDapp.mint(10, { value: ethers.utils.parseEther("0") })
 
      console.log("Trx hash:", mint.hash)
 }

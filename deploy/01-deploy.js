@@ -29,7 +29,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
           args: args,
           log: true,
      })
-     log(`MintingDapp deployed at ${MintingDapp.address}`)
+     console.log(`MintingDapp deployed at ${MintingDapp.address}`)
 
      //await verify(MintingDapp.address, args)
 }

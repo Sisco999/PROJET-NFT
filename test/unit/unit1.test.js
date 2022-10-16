@@ -11,20 +11,7 @@ describe("MintingDapp", async function () {
           MintingDapp = await ethers.getContract("MintingDapp", deployer)
      })
 
-     describe("Constructor", async function () {
-          it("checked is Base URI is  corect", async function () {
-               const CurentBaseURI = await MintingDapp.baseURI()
-               const expectedBaseURI = process.env.BASE_URI
-               assert.equal(CurentBaseURI.toString(), expectedBaseURI)
-          })
-          it("Should Change the Base URI", async function () {
-               const NewBaseURI = "ipfs://NewBaseURI"
-               const transactionResponse1 = await MintingDapp.setBaseURI(NewBaseURI)
-               await transactionResponse1.wait(1)
-               const CurentBaseURI = await MintingDapp.baseURI()
-               assert.equal(CurentBaseURI.toString(), NewBaseURI)
-          })
-     })
+  
 
      describe("withdraw", async function () {
           beforeEach(async function () {
@@ -63,39 +50,8 @@ describe("MintingDapp", async function () {
           })
      })
 
-     describe("Change Supply and Max Mint ", async function () {
-          beforeEach(async function () {
-               deployer = (await getNamedAccounts()).deployer
-               await deployments.fixture(["all"])
-               MintingDapp = await ethers.getContract("MintingDapp", deployer)
-          })
+    
 
-          it("Should reveal MaxSuplly", async function () {
-               const CurentMaxSupply = await MintingDapp.maxSupply()
-               const expecteMaxsupply = "22222"
-               assert.equal(CurentMaxSupply.toString(), expecteMaxsupply)
-          })
-          it("Should Change the MaxSuplly", async function () {
-               const NewMaxSuplly = "33333"
-               const transactionResponse1 = await MintingDapp.setmaxSupply(NewMaxSuplly)
-               await transactionResponse1.wait(1)
-               const CurentMaxSupply = await MintingDapp.maxSupply()
-               assert.equal(CurentMaxSupply.toString(), NewMaxSuplly)
-          })
-
-          it("Should verify Max mint amount", async function () {
-               const CurentMaxMijntAmounty = await MintingDapp.s_maxMintAmount()
-               const expecteMaxMintamount = "222"
-               assert.equal(CurentMaxMijntAmounty.toString(), expecteMaxMintamount)
-          })
-          it("Should Change the Max mint amount", async function () {
-               const NewMaxSuplly = "333"
-               const transactionResponse1 = await MintingDapp.setmaxMintAmount(NewMaxSuplly)
-               await transactionResponse1.wait(1)
-               const CurentMaxSupply = await MintingDapp.s_maxMintAmount()
-               assert.equal(CurentMaxSupply.toString(), NewMaxSuplly)
-          })
-     })
 
      describe("MAX Supply ERROR ", async function () {
           beforeEach(async function () {
@@ -108,7 +64,7 @@ describe("MintingDapp", async function () {
                const NewMaxSuplly = "1"
                const transactionResponse1 = await MintingDapp.setmaxSupply(NewMaxSuplly)
                await transactionResponse1.wait(1)
-               const CurentMaxSupply = await MintingDapp.maxSupply()
+               const CurentMaxSupply = await MintingDapp.i_maxSupply()
                assert.equal(CurentMaxSupply.toString(), NewMaxSuplly)
 
                it("mint and expect eror", async function () {
@@ -143,7 +99,7 @@ describe("MintingDapp", async function () {
           })
           it("Call ERROR when wrong price ", async function () {
                const accounts = await ethers.getSigners()
-               DepositAmount = "5"
+               DepositAmount = "4"
                const ConcetWithGuestAcount = await MintingDapp.connect(accounts[1])
                const mint = await MintingDapp.mint(1, {
                     value: ethers.utils.parseEther(DepositAmount),

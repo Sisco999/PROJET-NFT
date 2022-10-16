@@ -5,6 +5,7 @@ async function main() {
      const BefforWithdrawBalance = await MintingDapp.getContractBalance()
      console.log("before Withdraw balance is : :  ", BefforWithdrawBalance.toString())
      const withdrawAll = await MintingDapp.withdraw()
+     await withdrawAll.wait(1)
      const PostWithdrawBalance = await MintingDapp.getContractBalance()
      console.log("after withdraw balance is : :  ", PostWithdrawBalance.toString())
 }

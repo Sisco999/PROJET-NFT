@@ -32,19 +32,20 @@
           "web3": "^1.8.0"
      },
      "dependencies": {
-          "@openzeppelin/contracts": "^4.7.3"
+          "@openzeppelin/contracts": "^4.7.3",
+          "moralis": "^2.6.4",
+          "react-moralis": "^1.4.2"
      },
      "scripts": {
           "test": "hardhat test",
           "test:staging": "hardhat test --network goerli",
           "lint": "solhint 'contracts/*.sol'",
           "lint:fix": "solhint 'contracts/**/*.sol' --fix",
-          "format": "prettier --write .",
           "coverage": "hardhat coverage",
           "gasprice": "hh run scripts/GasPrice.js --network goerli",
           "mint": "hh run scripts/Mint.js ",
-          "deployLocal": "yarn hardhat run deploy/01-deploy.js ",
-          "price": "yarn hardhat run scripts/1ChheckPrice.js ",
+          "deploy": "yarn hardhat run deploy/01-deploy.js ",
+          "price": "yarn hardhat run scripts/checkPrice.js ",
           "changesuplly": "yarn hardhat run scripts/ChangeMaxSupply.js ",
           "supply": "yarn hardhat run scripts/checkSuply.js ",
           "Changeprice": "yarn hardhat run scripts/ChangePrice.js ",
